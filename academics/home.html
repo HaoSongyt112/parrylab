@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ParryLab | The Brain's Hub for Knowledge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="topnav" id="myTopnav">
+        <img class="logo" src="/image/image-removebg-preview (5).png">
+        <a href="/index.html" class="selection" id="homebtn">Home</a>
+        <a href="#news" class="selection" id="newsbtn">News</a>
+        <a href="#contact" class="selection" id="contactbtn">Contact</a>
+        <a onclick="dropDown()" class="selection dropbtn" id="langbtn">English</a>
+        <div id="myDropdown" class="dropdown-content">
+          <a id="lang3" onclick="switchLang('en')">English</a>
+          <a id="lang1" onclick="switchLang('zh')">简体中文</a>
+          <a id="lang2" onclick="switchLang('bm')">Bahasa Melayu</a>
+        </div>
+        <a class="title" id="title">ParryLab</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      <div style="margin-top: 10px;">
+        <div class="top-title animate">
+          <b id="top-title">Courses Category</b>
+        </div>
+        <div class="content-1">
+          <a onclick="academics()">
+            <div class="card eng animate">
+              <h1 class="box-title" id="box1">English</h1>
+              <div class="black"></div>
+              <img class="background" src="/image/Complete-English-Course-Intermediate-Level.jpg">
+            </div>
+          </a>
+          <a>
+            <div class="card bm animate">
+              <h1 class="box-title" id="box2">Malay</h1>
+              <div class="black"></div>
+              <img class="background" src="/image/Malay.png">
+            </div>
+          </a>
+          <a onclick="academics()">
+            <div class="card math animate">
+              <h1 class="box-title" id="box3">Math</h1>
+              <div class="black"></div>
+              <img class="background" src="/image/Math.jpg">
+            </div>
+          </a>
+          <a>
+            <div class="card sc animate">
+              <h1 class="box-title" id="box4">Science</h1>
+              <div class="black"></div>
+              <img class="background" src="/image/Science.jpg">
+            </div>
+          </a>
+          <a onclick="academics()">
+            <div class="card geo animate">
+              <h1 class="box-title" id="box5">Geography</h1>
+              <div class="black"></div>
+              <img class="background" src="/image/Geography.jpeg">
+            </div>
+          </a>
+          <a>
+            <div class="card sej animate">
+              <h1 class="box-title" id="box6">History</h1>
+              <div class="black"></div>
+              <img class="background" src="/image/History.jpg">
+            </div>
+          </a>
+        </div>
+      </div>
+
+<script src="home.js"></script>
+<script>
+  function dropDown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+  
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        return;
+      }
+      entry.target.classList.remove('in-view');
+      });
+    });
+    const allAnimatedElements = document.querySelectorAll('.animate');
+  
+    allAnimatedElements.forEach((element) => observer.observe(element));
+  
+  }); 
+  
+      function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+
+  var engstorage = sessionStorage.getItem("eng");
+  const englishdiv = document.getElementsByClassName('eng')[0]
+  var bmstorage = sessionStorage.getItem("bm");
+  const bmdiv = document.getElementsByClassName('bm')[0]
+  var mathstorage = sessionStorage.getItem("math");
+  const mathdiv = document.getElementsByClassName('math')[0]
+  var scstorage = sessionStorage.getItem("sc");
+  const scdiv = document.getElementsByClassName('sc')[0]
+  var sejstorage = sessionStorage.getItem("sej");
+  const sejdiv = document.getElementsByClassName('sej')[0]
+  var geostorage = sessionStorage.getItem("geo");
+  const geodiv = document.getElementsByClassName('geo')[0]
+
+  window.onload; {
+    if (engstorage == 'false') {
+      englishdiv.style.display = 'none'
+    }
+    if (bmstorage == 'false') {
+      bmdiv.style.display = 'none'
+    }
+    if (mathstorage == 'false') {
+      mathdiv.style.display = 'none'
+    }
+    if (scstorage == 'false') {
+      scdiv.style.display = 'none'
+    }
+    if (geostorage == 'false') {
+      geodiv.style.display = 'none'
+    }
+    if (sejstorage == 'false') {
+      sejdiv.style.display = 'none'
+    }
+  }
+  </script>
+</body>
+<style>
+    body {
+       width: 100vw;
+       height: 100vh;
+       margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        user-select: none;
+        overflow-x: hidden;
+    }
+
+    .topnav {
+        width: 20%;
+        height: 100vh;
+        top: 0px;
+        left: 0px;
+        display: flex;
+        position: fixed;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        background-color: lightgray;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        animation: fadeInNav 0.3s forwards;
+}
+
+.topnav a.selection {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  margin: 5vh 0vw;
+  text-decoration: none;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.topnav a.title {
+  display: none;
+}
+
+.topnav a.selection:hover {
+  animation: fadeInText 0.5s both;
+}
+
+.topnav a.icon {
+  display: none;
+}
+
+.logo {
+    width: 55%;
+    height: auto;
+}
+
+.top-title {
+  opacity: 0;
+  width: 80vw;
+  margin-left: 20vw;
+  font-size: 40px;
+  text-align: center;
+  animation: slideUpBox 0.7s forwards ease;
+}
+
+.content-1 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: 20vw;
+  width: 80vw;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  align-content: space-between;
+}
+
+.card {
+  opacity: 0;
+  display: flex;
+  width: 30vw;
+  margin: 20px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.content-1 .card.animate.in-view {
+  animation: slideUpBox 0.3s forwards ease;
+}
+
+.card .background {
+  display: block;
+  width: 30vw;
+  height: 30vh;
+  min-height: auto;
+  object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card .black {
+  position: absolute;
+  width: 30vw;
+  height: 30vh;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+
+.box-title {
+  display: block;
+  position: absolute;
+  z-index: 2;
+  font-size: 2vw;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 75vh;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.show {display:block;}
+
+@keyframes slideUpBox {
+  from {
+    margin-top: 100px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 20px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    color: black;
+    text-shadow: none;
+  }
+  100% {
+    color: white;
+    text-shadow: 2px 2px 8px gray;
+  }
+}
+
+@keyframes fadeInNav {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .box-desc {
+    margin-top: 4.5%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a.selection {display: none; margin: 0px;}
+  .topnav a.icon {
+    display: block;
+    margin: 0px;
+    margin-left: 80vw;
+    color: black;
+  }
+  .topnav {
+    position: relative;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    align-content: space-between;
+    flex-direction: row;
+  }
+  .logo {
+    width: 10%;
+    height: auto;
+  }
+  .content-1 {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+  .card {
+    width: 50vw;
+  }
+  .card .background {
+    width: 100%;
+  }
+  .card .black {
+    width: 50vw;
+  }
+  .top-title {
+  width: 100%;
+  margin-left: 0vw;
+  margin-top: 5vw;
+  font-size: 33px;
+  text-align: center;
+}
+ .box-title {
+  font-size: 6vw;
+ }
+ .dropdown-content {
+  position: relative;
+  top: 0;
+  text-align: center;
+ }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {display: block; position: relative; padding: 0px;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+  .topnav.responsive a.selection {
+    float: none;
+    display: block;
+    text-align: center;
+    margin: 0px;
+    padding: 14px 16px;
+  }
+  .topnav.responsive a.title {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    font-weight: bold;
+  }
+  .topnav.responsive .logo {
+    display: none;
+  }
+}
+</style>
+</html>
