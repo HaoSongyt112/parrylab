@@ -141,7 +141,7 @@
   const geodiv = document.getElementsByClassName('geo')[0]
   var bcstorage = sessionStorage.getItem("bc");
   const bcdiv = document.getElementsByClassName('bc')[0]
-  const nocoursetxt = document.getElementsByClassName('nocourses')[0]
+  let arr = [engstorage, bmstorage, bcstorage, mathstorage, scstorage, sejstorage, geostorage]
 
   window.onload; {
     if (engstorage == 'false') {
@@ -165,8 +165,8 @@
     if (sejstorage == 'false') {
       sejdiv.style.display = 'none'
     }
-    else {
-      nocoursetxt.style.display = 'none'
+    if (arr.every((val) => val === 'false') == true) {
+      document.getElementById("nocourses").style.display = 'inline-block'
     }
   }
   </script>
@@ -246,6 +246,7 @@
 }
 
 .nocourses {
+  display: none;
   font-size: 30px;
   text-align: center;
 }
