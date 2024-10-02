@@ -27,7 +27,8 @@
           <b id="top-title">Courses Category</b>
         </div>
         <div class="content-1">
-          <a onclick="academics()">
+          <h1 class="nocourses" id="nocourses">You have no courses right now!</h1>
+          <a onclick="academics()" href="en/interception.html">
             <div class="card eng animate">
               <h1 class="box-title" id="box1">English</h1>
               <div class="black"></div>
@@ -41,35 +42,45 @@
               <img class="background" src="/image/Malay.png">
             </div>
           </a>
+          <a>
+            <div class="card bc animate">
+              <h1 class="box-title" id="box3">Chinese</h1>
+              <div class="black"></div>
+              <img class="background" src="/image/Malay.png">
+            </div>
+          </a>
           <a onclick="academics()">
             <div class="card math animate">
-              <h1 class="box-title" id="box3">Math</h1>
+              <h1 class="box-title" id="box4">Math</h1>
               <div class="black"></div>
               <img class="background" src="/image/Math.jpg">
             </div>
           </a>
           <a>
             <div class="card sc animate">
-              <h1 class="box-title" id="box4">Science</h1>
+              <h1 class="box-title" id="box5">Science</h1>
               <div class="black"></div>
               <img class="background" src="/image/Science.jpg">
             </div>
           </a>
           <a onclick="academics()">
             <div class="card geo animate">
-              <h1 class="box-title" id="box5">Geography</h1>
+              <h1 class="box-title" id="box6">Geography</h1>
               <div class="black"></div>
               <img class="background" src="/image/Geography.jpeg">
             </div>
           </a>
           <a>
             <div class="card sej animate">
-              <h1 class="box-title" id="box6">History</h1>
+              <h1 class="box-title" id="box7">History</h1>
               <div class="black"></div>
               <img class="background" src="/image/History.jpg">
             </div>
           </a>
         </div>
+        <div class="change">
+          <a href="/survey.html">Bored about the lessons? Try others!</a>
+      </div>
       </div>
 
 <script src="home.js"></script>
@@ -128,6 +139,9 @@
   const sejdiv = document.getElementsByClassName('sej')[0]
   var geostorage = sessionStorage.getItem("geo");
   const geodiv = document.getElementsByClassName('geo')[0]
+  var bcstorage = sessionStorage.getItem("bc");
+  const bcdiv = document.getElementsByClassName('bc')[0]
+  const nocoursetxt = document.getElementsByClassName('nocourses')[0]
 
   window.onload; {
     if (engstorage == 'false') {
@@ -135,6 +149,9 @@
     }
     if (bmstorage == 'false') {
       bmdiv.style.display = 'none'
+    }
+    if (bcstorage == 'false') {
+      bcdiv.style.display = 'none'
     }
     if (mathstorage == 'false') {
       mathdiv.style.display = 'none'
@@ -147,6 +164,9 @@
     }
     if (sejstorage == 'false') {
       sejdiv.style.display = 'none'
+    }
+    else {
+      nocoursetxt.style.display = 'none'
     }
   }
   </script>
@@ -225,6 +245,11 @@
   align-content: space-between;
 }
 
+.nocourses {
+  font-size: 30px;
+  text-align: center;
+}
+
 .card {
   opacity: 0;
   display: flex;
@@ -286,6 +311,26 @@
 .dropdown-content a:hover {background-color: #ddd;}
 
 .show {display:block;}
+
+.change {
+  width: 80vw;
+  margin-left: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.change a {
+  background-color: lightgray;
+  padding: 10px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: black;
+}
+
+.change a:hover {
+  animation: fadeInText 0.5s both;
+}
 
 @keyframes slideUpBox {
   from {
@@ -373,6 +418,10 @@
   position: relative;
   top: 0;
   text-align: center;
+ }
+ .change {
+  width: 100vw;
+  margin-left: 0vw;
  }
 }
 
