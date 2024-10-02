@@ -47,8 +47,7 @@ let languageContent = {
  }
 
  const queryString = window.location.search;
- const urlParams = new URLSearchParams(queryString);
- const language = urlParams.get('lang')
+ const language = sessionStorage.getItem('lang')
 
  window.onload; {
    if (language == 'en') {

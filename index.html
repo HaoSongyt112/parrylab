@@ -4,14 +4,15 @@
     <title>ParryLab | The Brain's Hub for Knowledge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/image/image-removebg-preview (5).png">
 </head>
 <body>
     <div class="topnav" id="myTopnav">
         <a href="#home" class="selection">Home</a>
-        <a href="#news" class="selection">News</a>
+        <a onclick="experience()" class="selection">ParryLab Experience</a>
         <img class="logo" src="image/image-removebg-preview (5).png">
-        <a href="#contact" class="selection">Contact</a>
-        <a href="#about" class="selection">About</a>
+        <a href="#contact" class="selection">My Creators</a>
+        <a href="#about" class="selection">About Me</a>
         <a class="title">ParryLab</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
@@ -24,7 +25,22 @@
       </div>
       <div class="about-me">
         <h1>About Me!</h1>
-        <p></p>
+        <div class="inner">
+          <img src="image/image-removebg-preview (5).png">
+          <p>Hello! I am Parry, I will assist you in your journey to academic greatness! I am created by 3 students from SMK Seri Kembangan, My creators have designed me to be advanced yet simple. Find out more by exploring my features!</p>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="p1">
+          <h2>ParryLab</h2>
+          <p>© 2024 All rights reserved</p>
+        </div>
+        <div class="p2">
+          <h3>Find us via social medias!</h3>
+          <a href="https://www.instagram.com/xenise_real/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/haosong150/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/joshua_09_13/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        </div>
       </div>
 </body>
 <style>
@@ -111,12 +127,59 @@
 
 .about-me {
   display: flex;
+  flex-direction: column;
   margin: 10px;
   margin-left: 30px;
 }
 
 .about-me h1 {
   font-size: 3.5vw;
+}
+
+.inner {
+  display: flex;
+  flex-direction: row;
+}
+
+.inner img {
+  width: 20%;
+  height: auto;
+}
+
+.inner p {
+  font-size: 1.5vw;
+}
+
+.footer {
+  display: flex;
+  background-color: black;
+  color: white;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.p1, .p2 {
+  margin: 50px;
+}
+
+.p2 i {
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 5px;
+  color: white;
+}
+
+.p2 i:hover {
+  animation: icon-hover 0.5s forwards;
+}
+
+@keyframes icon-hover {
+  0% {
+    color: white;
+  }
+  100% {
+    color: lightgray;
+  }
 }
 
 @keyframes fadeInText {
@@ -185,6 +248,37 @@
   .topnav.responsive .logo {
     display: none;
   }
+  .inner{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-me {
+    text-align: center;
+    margin-left: 10px;
+  }
+
+  .about-me h1 {
+  font-size: 7.5vw;
+}
+
+  .inner img {
+    width: 80vw;
+    height: auto;
+  }
+
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .p1, .p2 {
+    margin: 20px 0px;
+  }
+  .inner p {
+  font-size: 5vw;
+}
 }
 </style>
 <script>
@@ -196,5 +290,20 @@
     x.className = "topnav";
   }
 }
+
+function setCookie(c_name,value,exdays){var exdate=new Date();exdate.setDate(exdate.getDate() + exdays);var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());document.cookie=c_name + "=" + c_value;}
+
+function getCookie(c_name){var c_value = document.cookie;var c_start = c_value.indexOf(" " + c_name + "=");if (c_start == -1){c_start = c_value.indexOf(c_name + "=");}if (c_start == -1){c_value = null;}else{c_start = c_value.indexOf("=", c_start) + 1;var c_end = c_value.indexOf(";", c_start);if (c_end == -1){c_end = c_value.length;}c_value = unescape(c_value.substring(c_start,c_end));}return c_value;}
+
+function experience(){
+   var c = getCookie("visited");
+   if (c === "yes") {
+     window.location.href = "learning.html"
+   } else {
+     window.location.href = "survey.html"
+   }
+   setCookie("visited", "yes", null);
+}
+
 </script>
 </html>
