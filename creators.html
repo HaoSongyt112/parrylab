@@ -8,40 +8,53 @@
 </head>
 <body>
     <div class="topnav" id="myTopnav">
-        <a onclick="experience()" class="selection experience" id="experiencebtn">ParryLab <br> Experience</a>
-        <a href="creators.html" class="selection" id="creatorsbtn">My Creators</a>
+        <a href="index.html" class="selection">Home</a>
+        <a onclick="experience()" class="selection">ParryLab <br> Experience</a>
         <img class="logo" src="image/image-removebg-preview (5).png">
-        <a href="#about" class="selection" id="aboutbtn">About Me</a>
+        <a href="#about" class="selection">About Me</a>
         <a onclick="dropDown()" class="selection dropbtn" id="langbtn">English</a>
         <div id="myDropdown" class="dropdown-content">
           <a id="lang3" onclick="switchLang('en')">English</a>
           <a id="lang1" onclick="switchLang('zh')">简体中文</a>
           <a id="lang2" onclick="switchLang('bm')">Malay</a>
         </div>
-        <a class="title" id="title">ParryLab</a>
+        <a class="toptitle">ParryLab</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
         </a>
       </div>
-      <div class="divbck">
-        <div class="blackovrlay"></div>
-        <h1 class="title1" id="title1">Education is Life<br>And the Future is Right Around</h1>
-        <img class="bck" src="image/Home_Bck.jpeg">
-      </div>
-      <div class="about-me">
-        <h1 id="aboutme">About Me!</h1>
-        <div class="inner">
-          <img src="image/image-removebg-preview (5).png">
-          <p id="desc">Hello! I am Parry, I will assist you in your journey to academic greatness! I am created by 3 students from SMK Seri Kembangan, My creators have designed me to be advanced yet simple. Find out more by exploring my features!</p>
+      <div class="content-1">
+        <h1 class="title animate">My Creators!</h1>
+        <div class="main">
+            <img class="image animate" src="image/test.jpg">
+            <p class="animate">ParryLab's is created by three students from SMKSK. Hao Song, Khoo Joshua and Joshua Fong, The three of them formed a group name J&H to embark on a journey to make ParryLab the best learning experience on the Internet</p>
         </div>
+      </div>
+      <div class="content-2">
+        <h1 class="title animate">Coding Team</h1>
+        <div class="main">
+            <img class="image animate" src="image/test.jpg">
+            <p class="animate">The coding behind ParryLab is led by Hao Song. Using his coding knowledge, he provides ParryLab with a smooth and attractive design, as well as a functioning interface to let users interact with ease. <br><br> Hao Song, our coding maestro. Gives life and function to Parry's amazing classroom/lab. Hao Song has great problem solving skills, able to repair errors in matter of seconds <br><br> His excellent coding brings users a wonderful experience towards ParryLab. Not only that, Hao Song has extraordinary creativity</p>
+        </div>
+      </div>
+      <div class="content-3">
+        <h1 class="title animate">Content Team</h1>
+        <div class="main">
+            <img class="image animate" src="image/test.jpg">
+            <p class="animate">The content inside of ParryLab is provided by Joshua Fong and Khoo Joshua. Both Joshua's work to give the best content for ParryLab, using their creativity to make lessons plans for each subjects. <br><br> Khoo Joshua is tasked with writing for Parry's messages. He has flawless grammar, keeps you enticed while reading and never fails to impress with his words <br><br> His grammar abilities gives him a wide range of writing options, Khoo Joshua brings writing excellency to ParryLab</p>
+        </div>
+        <div class="main">
+          <img class="image animate" src="image/test.jpg">
+          <p class="animate">The graphics for ParryLab is provided by Joshua Fong. He is tasked with graphics because of his creativity and open mind <br><br> Using his creativity, he can bring colour and vibrance towards the site. Joshua Fong also helps to edit and polish off Parry</p>
+      </div>
       </div>
       <div class="footer">
         <div class="p1">
-          <h2 id="ftitle">ParryLab</h2>
-          <p id="fdesc">© 2024 All rights reserved</p>
+          <h2>ParryLab</h2>
+          <p>© 2024 All rights reserved</p>
         </div>
         <div class="p2">
-          <h3 id="fsocial">Find us via social medias!</h3>
+          <h3>Find us via social medias!</h3>
           <a href="https://www.instagram.com/xenise_real/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/haosong150/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/joshua_09_13/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -49,7 +62,7 @@
       </div>
 </body>
 <style>
-    body {
+       body {
         user-select: none;
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
@@ -76,7 +89,7 @@
   cursor: pointer;
 }
 
-.topnav a.title {
+.topnav a.toptitle {
   display: none;
 }
 
@@ -101,7 +114,7 @@
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 10;
-  margin-left: 69vw;
+  margin-left: 65vw;
   margin-top: 25vh;
 }
 
@@ -118,68 +131,31 @@
 
 .show {display:block;}
 
-.divbck {
-  display: flex;
-  width: 100%;
-  height: 80vh;
-  justify-content: center;
-  align-items: center;
+.main {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    margin-top: 0px;
 }
 
-.bck {
-  width: 100%;
-  height: 80vh;
-  object-fit: cover;
-  z-index: -2;
+.main p {
+    margin-left: 20px;
+    margin-top: 0px;
+    font-size: 2vw;
+    z-index: -1;
 }
 
-.title1 {
-  width: 90vw;
-  position: absolute;
-  color: white;
-  text-shadow: 2px 2px 8px #000000;
-  font-size: 5vw;
-  overflow: hidden;
-  border-right: .15em solid gray;
-  white-space: nowrap;
-  margin: 0;
-  animation: 
-    typing 2.5s steps(40, end),
-    blink-caret .75s step-end infinite;
-  z-index: -1;
+.image {
+    width: 20vw;
+    height: auto;
+    border-radius: 0px 30px 30px;
 }
 
-.blackovrlay {
-  position: absolute;
-  width: 100%;
-  height: 80vh;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: -1;
-}
-
-.about-me {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  margin-left: 30px;
-}
-
-.about-me h1 {
-  font-size: 3.5vw;
-}
-
-.inner {
-  display: flex;
-  flex-direction: row;
-}
-
-.inner img {
-  width: 20%;
-  height: auto;
-}
-
-.inner p {
-  font-size: 1.5vw;
+.title {
+    font-size: 4vw;
+    margin-bottom: 0px;
+    margin-left: 30px;
+    text-shadow: 2px 4px 8px lightgray;
 }
 
 .footer {
@@ -205,6 +181,14 @@
   animation: icon-hover 0.5s forwards;
 }
 
+.animate {
+    opacity: 0;
+}
+
+.animate.in-view {
+  animation: slideUpBox 0.3s forwards ease;
+}
+
 @keyframes icon-hover {
   0% {
     color: white;
@@ -214,14 +198,14 @@
   }
 }
 
-@keyframes fadeInText {
-  0% {
-    color: black;
-    text-shadow: none;
+@keyframes slideUpBox {
+  from {
+    margin-top: 100px;
+    opacity: 0;
   }
-  100% {
-    color: white;
-    text-shadow: 2px 2px 8px gray;
+  to {
+    margin-top: 20px;
+    opacity: 1;
   }
 }
 
@@ -234,14 +218,15 @@
   }
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 90vw }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: lightgray; }
+@keyframes fadeInText {
+  0% {
+    color: black;
+    text-shadow: none;
+  }
+  100% {
+    color: white;
+    text-shadow: 2px 2px 8px gray;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -276,7 +261,7 @@
     padding: 14px 16px;
     font-size: 17px;
   }
-  .topnav.responsive a.title {
+  .topnav.responsive a.toptitle {
     display: block;
     text-align: center;
     padding: 14px 16px;
@@ -285,7 +270,7 @@
   .topnav.responsive .logo {
     display: none;
   }
-
+  
   .dropdown-content {
   position: relative;
   margin: 0;
@@ -296,28 +281,20 @@
   font-size: 17px;
  }
 
- .experience br {
-  display: none;
- }
- 
-  .inner{
+  .main {
     flex-direction: column;
-    align-items: center;
   }
 
-  .about-me {
-    text-align: center;
-    margin-left: 10px;
+  .main p {
+    font-size: 5vw;
+    margin-left: 0px;
   }
 
-  .about-me h1 {
-  font-size: 7.5vw;
-}
-
-  .inner img {
-    width: 80vw;
+  .image {
+    width: 50vw;
     height: auto;
-  }
+    margin: auto;
+}
 
   .footer {
     flex-direction: column;
@@ -328,19 +305,22 @@
   .p1, .p2 {
     margin: 20px 0px;
   }
-  .inner p {
-  font-size: 5vw;
-}
+  .title {
+    font-size: 10vw;
+    text-align: center;
+    margin-left: 0px;
+  }
 
-.title1 {
-  width: 85vw;
-}
+  .dropdown-content {
+  position: relative;
+  top: 0;
+  text-align: center;
+ }
 }
 </style>
-<script src="index.js"></script>
 <script src="experience.js"></script>
 <script>
-    function myFunction() {
+function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
@@ -353,7 +333,7 @@ function dropDown() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
 
-window.onclick = function(event) {
+  window.onclick = function(event) {
     if (!event.target.matches('.dropbtn')) {
       var dropdowns = document.getElementsByClassName("dropdown-content");
       var i;
@@ -365,5 +345,21 @@ window.onclick = function(event) {
       }
     }
   }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        return;
+      }
+      entry.target.classList.remove('in-view');
+      });
+    });
+    const allAnimatedElements = document.querySelectorAll('.animate');
+  
+    allAnimatedElements.forEach((element) => observer.observe(element));
+  
+  }); 
 </script>
 </html>

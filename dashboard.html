@@ -24,30 +24,35 @@
       </div>
       <div style="margin-top: 10px;">
         <div class="top-title animate">
-          <b id="top-title">Courses Category</b>
+          <b id="top-title">Dashboard</b>
         </div>
         <div class="content-1 animate">
-          <a onclick="academics()">
-            <div class="card">
-              <h1 class="box-title" id="academics">Academics</h1>
-              <div class="black"></div>
-              <img class="background" src="image/Academics.jpeg">
-            </div>
-          </a>
           <a>
             <div class="card">
-              <h1 class="box-title" id="cocurriculum">Co-Curriculum</h1>
-              <div class="black"></div>
-              <img class="background" src="image/Cocuriculum.jpeg">
+              <img src="image/blank-profile-picture-973460_960_720.jpg">
+              <div style="margin-left: 1vw;">
+                <h1 class="box-title" id="name">User</h1>
+                <h2 id="gradename">Grade: <span id="grade"></span></h2>
+                <h2 class="subjects" id="subjectsname">Subjects: <span id="subjects"></span></h2>
+              </div>
             </div>
           </a>
-        </div>
-        <div class="change">
-          <a href="survey.html">Bored about the lessons? Try others!</a>
+          <a onclick="academics()">
+            <div class="card2">
+              <h2>Session Time</h2>
+              <h1 id="time"><span id="hours"></span><span id="minutes"></span><span id="seconds"></span></h1>
+            </div>
+          </a>
+          <a onclick="academics()">
+            <div class="card3">
+              <h2>Total Time</h2>
+              <h1 id="time"><span id="thours"></span><span id="tminutes"></span><span id="tseconds"></span></h1>
+            </div>
+          </a>
         </div>
       </div>
 
-<script src="learning.js"></script>
+<script src="dashboard.js"></script>
 <script src="time.js"></script>
 <script>
   function dropDown() {
@@ -91,6 +96,97 @@
       x.className = "topnav";
     }
   }
+
+  window.onload; {
+    if (sessionStorage.getItem('grade') == 'undefined' / 'NaN' / 'Null') {
+      document.getElementById('grade').innerHTML = 'None'
+    } else {
+      document.getElementById('grade').innerHTML = sessionStorage.getItem('grade')
+    }
+
+    var engstorage = sessionStorage.getItem("eng");
+   var bmstorage = sessionStorage.getItem("bm");
+   var mathstorage = sessionStorage.getItem("math");
+   var scstorage = sessionStorage.getItem("sc");
+   var sejstorage = sessionStorage.getItem("sej");
+   var geostorage = sessionStorage.getItem("geo");
+   var bcstorage = sessionStorage.getItem("bc");
+   let arr = [engstorage, bmstorage, bcstorage, mathstorage, scstorage, sejstorage, geostorage]
+
+    if (engstorage == 'true') {
+      document.getElementById("subjects").innerHTML = "English"
+    }
+    if (bmstorage == 'true') {
+      document.getElementById("subjects").innerHTML = document.getElementById("subjects").innerHTML+", "+"Malay"
+    }
+    if (bcstorage == 'true') {
+      document.getElementById("subjects").innerHTML = document.getElementById("subjects").innerHTML+", "+"Chinese"
+    }
+    if (mathstorage == 'true') {
+      document.getElementById("subjects").innerHTML = document.getElementById("subjects").innerHTML+", "+"Malay"
+    }
+    if (scstorage == 'true') {
+      document.getElementById("subjects").innerHTML = document.getElementById("subjects").innerHTML+", "+"Science"
+    }
+    if (geostorage == 'true') {
+      document.getElementById("subjects").innerHTML = document.getElementById("subjects").innerHTML+", "+"Geography"
+    }
+    if (sejstorage == 'true') {
+      document.getElementById("subjects").innerHTML = document.getElementById("subjects").innerHTML+", "+"History"
+    }
+    if (arr.every((val) => val === 'false') == true) {
+      document.getElementById("subjects").innerHTML = "None"
+    }
+  }
+
+  setInterval(getSessionTime, 1000);
+  setInterval(getLocalTime, 1000);
+
+function getSessionTime() {
+    const time = sessionStorage.getItem('sessiontime') / 1000
+    const hours = Math.trunc(time / 3600)
+    const minutes = Math.trunc(time / 60)
+    const seconds = time - 60 * minutes
+    if (hours <= 0, hours == NaN) {
+      document.getElementById('hours').innerHTML = ""
+    } else {
+      document.getElementById('hours').innerHTML = hours + "h"
+    }
+    if (minutes <= 0, minutes == NaN) {
+      document.getElementById('minutes').innerHTML = ""
+    } else {
+      document.getElementById('minutes').innerHTML = minutes + "m"
+    }
+    if (seconds < 0, seconds == NaN) {
+      document.getElementById('seconds').innerHTML = ""
+    } else {
+      document.getElementById('seconds').innerHTML = seconds + "s"
+    }
+    console.log(time, hours, minutes, seconds)
+}
+
+function getLocalTime() {
+    const time = localStorage.getItem('localtime') / 1000
+    const hours = Math.trunc(time / 3600)
+    const minutes = Math.trunc(time / 60)
+    const seconds = time - 60 * minutes
+    if (hours <= 0, hours == NaN) {
+      document.getElementById('thours').innerHTML = ""
+    } else {
+      document.getElementById('thours').innerHTML = hours + "h"
+    }
+    if (minutes <= 0, minutes == NaN) {
+      document.getElementById('tminutes').innerHTML = ""
+    } else {
+      document.getElementById('tminutes').innerHTML = minutes + "m"
+    }
+    if (seconds < 0, seconds == NaN) {
+      document.getElementById('tseconds').innerHTML = ""
+    } else {
+      document.getElementById('tseconds').innerHTML = seconds + "s"
+    }
+    console.log(time, hours, minutes, seconds)
+}
   </script>
 </body>
 <style>
@@ -160,8 +256,8 @@
   width: 80vw;
   height: auto;
   align-items: center;
-  justify-content: center;
   align-content: space-between;
+  justify-content: center;
 }
 
 .content-1.in-view {
@@ -174,38 +270,87 @@
 
 .card {
   display: flex;
-  width: 30vw;
-  margin: 20px;
-  color: white;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.card .background {
-  display: block;
-  width: 30vw;
+  width: 40vw;
   height: 30vh;
-  min-height: auto;
-  object-fit: cover;
-  border-radius: 25px;
+  margin: 10px 20px;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  background-color: lightgray;
+  align-items: center;
+  flex-direction: row;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card .black {
-  position: absolute;
+.card2 {
+  display: flex;
   width: 30vw;
   height: 30vh;
-  border-radius: 25px;
-  background-color: rgba(0, 0, 0, 0.25);
-  z-index: 1;
+  padding: 10px;
+  margin: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  background-color: lightgray;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card2 h1 {
+  font-size: 3vw;
+  margin: 0px;
+}
+
+.card2 h2 {
+  font-size: 2vw;
+  margin: 0px;
+}
+
+.card2 span {
+  margin: 0px 10px;
+}
+
+.card3 {
+  display: flex;
+  width: 30vw;
+  height: 30vh;
+  padding: 10px;
+  margin: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  background-color: lightgray;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card3 h1 {
+  font-size: 3vw;
+  margin: 0px;
+}
+
+.card3 h2 {
+  font-size: 2vw;
+  margin: 0px;
+}
+
+.card3 span {
+  margin: 0px 10px;
+}
+
+.card img {
+  width: 12vw;
+  height: auto;
+  border-radius: 20px;
+  margin-left: 0.7vw;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .box-title {
   display: block;
-  position: absolute;
   z-index: 2;
-  font-size: 2vw;
 }
 
 .dropdown-content {
@@ -228,27 +373,6 @@
 .dropdown-content a:hover {background-color: #ddd;}
 
 .show {display:block;}
-
-.change {
-  width: 80vw;
-  margin-left: 20vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.change a {
-  background-color: lightgray;
-  padding: 10px;
-  border-radius: 30px;
-  text-decoration: none;
-  color: black;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
-}
-
-.change a:hover {
-  animation: fadeInText 0.5s both;
-}
 
 @keyframes slideUpBox {
   from {
@@ -312,15 +436,39 @@
     width: 100%;
     height: auto;
     margin: 0;
+    justify-content: center;
   }
   .card {
-    width: 50vw;
+    width: 85vw;
+    height: auto;
+    margin: 0;
+    margin-bottom: 10px;
+    flex-direction: column;
+    text-align: center;
   }
-  .card .background {
-    width: 100%;
+  .card img {
+    width: 40vw;
+    margin-top: 5vw;
   }
-  .card .black {
-    width: 50vw;
+  .card2 {
+    width: 85vw;
+    height: 20vh;
+  }
+  .card2 h2 {
+    font-size: 8vw;
+  }
+  .card2 h1 {
+    font-size: 10vw;
+  }
+  .card3 {
+    width: 85vw;
+    height: 20vh;
+  }
+  .card3 h2 {
+    font-size: 8vw;
+  }
+  .card3 h1 {
+    font-size: 10vw;
   }
   .top-title {
   width: 100%;
@@ -341,10 +489,6 @@
   position: relative;
   top: 0;
   text-align: center;
- }
- .change {
-  width: 100vw;
-  margin-left: 0vw;
  }
 }
 

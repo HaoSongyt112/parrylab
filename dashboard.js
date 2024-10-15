@@ -5,7 +5,7 @@ let languageContent = {
        "contactbtn": "Contact",
        "langbtn": "English",
        "title": "ParryLab",
-       "top-title": "Courses Category",
+       "top-title": "Dashboard",
        "academics": "Academics",
        "cocurriculum": "Co-Curriculum",
     },
