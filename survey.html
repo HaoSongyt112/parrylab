@@ -3,21 +3,26 @@
 <head>
     <title>ParryLab | The Brain's Hub for Knowledge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="/image/image-removebg-preview (5).png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
   <div class="main">
     <a style="margin-top: 10px;"><span onclick="switchLang('en')" style="cursor: pointer;">EN</span> | <span style="cursor: pointer;" onclick="switchLang('bm')">BM</span> | <span style="cursor: pointer;" onclick="switchLang('zh')">BC</span></a>
     <img class="logo" src="image/image-removebg-preview (5).png">
+    <div>
+      <label>Name:</label>
+      <input type="text" placeholder="John Doe" id="name">
+    </div><br>
     <div class="form">
       <label id="levels">Levels: </label>
       <select name="level" id="level" class="level">
         <option value="Remove" id="Remove">Remove</option>
-        <option value="Form1" id="Form1">Form 1</option>
-        <option value="Form2" id="Form2">Form 2</option>
+        <option value="Form1" id="Form1" disabled>Form 1</option>
+        <option value="Form2" id="Form2" disabled>Form 2</option>
         <option value="Form3" id="Form3">Form 3</option>
-        <option value="Form4" id="Form4">Form 4</option>
-        <option value="Form5" id="Form5">Form 5</option>
+        <option value="Form4" id="Form4" disabled>Form 4</option>
+        <option value="Form5" id="Form5" disabled>Form 5</option>
       </select>
     </div>
     <div class="subjects">
@@ -59,8 +64,7 @@
   
   }); 
 
-  function submit() {
-    let eng = document.getElementById('English').checked
+  let eng = document.getElementById('English').checked
     let bc = document.getElementById('Chinese').checked
     let bm = document.getElementById('Malay').checked
     let sc = document.getElementById('Science').checked
@@ -68,16 +72,24 @@
     let geo = document.getElementById('Geography').checked
     let sej = document.getElementById('History').checked
     let grade = document.getElementById('level').value
-    sessionStorage.setItem("eng", eng)
-    sessionStorage.setItem("bc", bc)
-    sessionStorage.setItem("bm", bm)
-    sessionStorage.setItem("sc", sc)
-    sessionStorage.setItem("math", math)
-    sessionStorage.setItem("geo", geo)
-    sessionStorage.setItem("sej", sej)
-    sessionStorage.setItem("grade", grade)
-    window.location.href = 'learning.html';
-  }
+
+    function submit() {
+      const name = document.getElementById('name').value
+      if (name != '') {
+        sessionStorage.setItem("eng", eng)
+        sessionStorage.setItem("bc", bc)
+        sessionStorage.setItem("bm", bm)
+        sessionStorage.setItem("sc", sc)
+        sessionStorage.setItem("math", math)
+        sessionStorage.setItem("geo", geo)
+        sessionStorage.setItem("sej", sej)
+        sessionStorage.setItem("grade", grade)
+        localStorage.setItem("name", name)
+        window.location.href = 'learning.html';
+      } else {
+        alert('Please fill in your name!')
+      }
+    }
   </script>
 </body>
 <style>

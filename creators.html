@@ -3,15 +3,16 @@
 <head>
     <title>ParryLab | The Brain's Hub for Knowledge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="/image/image-removebg-preview (5).png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" type="image/x-icon" href="/image/image-removebg-preview (5).png">
 </head>
 <body>
     <div class="topnav" id="myTopnav">
-        <a href="index.html" class="selection">Home</a>
-        <a onclick="experience()" class="selection">ParryLab <br> Experience</a>
+        <a href="index.html" class="selection" id="homebtn">Home</a>
+        <a onclick="experience()" class="selection experience" id="experiencebtn">ParryLab <br> Experience</a>
         <img class="logo" src="image/image-removebg-preview (5).png">
-        <a href="#about" class="selection">About Me</a>
+        <a href="#about" class="selection experience" id="aboutbtn">About Me</a>
         <a onclick="dropDown()" class="selection dropbtn" id="langbtn">English</a>
         <div id="myDropdown" class="dropdown-content">
           <a id="lang3" onclick="switchLang('en')">English</a>
@@ -24,37 +25,37 @@
         </a>
       </div>
       <div class="content-1">
-        <h1 class="title animate">My Creators!</h1>
+        <h1 class="title animate" id="title1">My Creators!</h1>
         <div class="main">
             <img class="image animate" src="image/test.jpg">
-            <p class="animate">ParryLab's is created by three students from SMKSK. Hao Song, Khoo Joshua and Joshua Fong, The three of them formed a group name J&H to embark on a journey to make ParryLab the best learning experience on the Internet</p>
+            <p class="animate" id="text1">ParryLab's is created by three students from SMKSK. Hao Song, Khoo Joshua and Joshua Fong, The three of them formed a group name J&H to embark on a journey to make ParryLab the best learning experience on the Internet</p>
         </div>
       </div>
       <div class="content-2">
-        <h1 class="title animate">Coding Team</h1>
+        <h1 class="title animate" id="title2">Coding Team</h1>
         <div class="main">
             <img class="image animate" src="image/test.jpg">
-            <p class="animate">The coding behind ParryLab is led by Hao Song. Using his coding knowledge, he provides ParryLab with a smooth and attractive design, as well as a functioning interface to let users interact with ease. <br><br> Hao Song, our coding maestro. Gives life and function to Parry's amazing classroom/lab. Hao Song has great problem solving skills, able to repair errors in matter of seconds <br><br> His excellent coding brings users a wonderful experience towards ParryLab. Not only that, Hao Song has extraordinary creativity</p>
+            <p class="animate" id="text2">The coding behind ParryLab is led by Hao Song. Using his coding knowledge, he provides ParryLab with a smooth and attractive design, as well as a functioning interface to let users interact with ease. <br><br> Hao Song, our coding maestro. Gives life and function to Parry's amazing classroom/lab. Hao Song has great problem solving skills, able to repair errors in matter of seconds <br><br> His excellent coding brings users a wonderful experience towards ParryLab. Not only that, Hao Song has extraordinary creativity</p>
         </div>
       </div>
       <div class="content-3">
-        <h1 class="title animate">Content Team</h1>
+        <h1 class="title animate" id="title3">Content Team</h1>
         <div class="main">
             <img class="image animate" src="image/test.jpg">
-            <p class="animate">The content inside of ParryLab is provided by Joshua Fong and Khoo Joshua. Both Joshua's work to give the best content for ParryLab, using their creativity to make lessons plans for each subjects. <br><br> Khoo Joshua is tasked with writing for Parry's messages. He has flawless grammar, keeps you enticed while reading and never fails to impress with his words <br><br> His grammar abilities gives him a wide range of writing options, Khoo Joshua brings writing excellency to ParryLab</p>
+            <p class="animate" id="text3">The content inside of ParryLab is provided by Joshua Fong and Khoo Joshua. Both Joshua's work to give the best content for ParryLab, using their creativity to make lessons plans for each subjects. <br><br> Khoo Joshua is tasked with writing for Parry's messages. He has flawless grammar, keeps you enticed while reading and never fails to impress with his words <br><br> His grammar abilities gives him a wide range of writing options, Khoo Joshua brings writing excellency to ParryLab</p>
         </div>
         <div class="main">
           <img class="image animate" src="image/test.jpg">
-          <p class="animate">The graphics for ParryLab is provided by Joshua Fong. He is tasked with graphics because of his creativity and open mind <br><br> Using his creativity, he can bring colour and vibrance towards the site. Joshua Fong also helps to edit and polish off Parry</p>
+          <p class="animate" id="text4">The graphics for ParryLab is provided by Joshua Fong. He is tasked with graphics because of his creativity and open mind <br><br> Using his creativity, he can bring colour and vibrance towards the site. Joshua Fong also helps to edit and polish off Parry</p>
       </div>
       </div>
       <div class="footer">
         <div class="p1">
-          <h2>ParryLab</h2>
-          <p>© 2024 All rights reserved</p>
+          <h2 id="ftitle">ParryLab</h2>
+          <p id="fdesc">© 2024 All rights reserved</p>
         </div>
         <div class="p2">
-          <h3>Find us via social medias!</h3>
+          <h3 id="fsocial">Find us via social medias!</h3>
           <a href="https://www.instagram.com/xenise_real/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/haosong150/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
           <a href="https://www.instagram.com/joshua_09_13/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
@@ -152,10 +153,12 @@
 }
 
 .title {
+  position: relative;
     font-size: 4vw;
     margin-bottom: 0px;
     margin-left: 30px;
     text-shadow: 2px 4px 8px lightgray;
+    z-index: -1;
 }
 
 .footer {
@@ -311,6 +314,10 @@
     margin-left: 0px;
   }
 
+  .experience br {
+  display: none;
+ }
+
   .dropdown-content {
   position: relative;
   top: 0;
@@ -318,6 +325,7 @@
  }
 }
 </style>
+<script src="creators.js"></script>
 <script src="experience.js"></script>
 <script>
 function myFunction() {

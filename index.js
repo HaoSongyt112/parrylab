@@ -26,7 +26,7 @@ let languageContent = {
        "fsocial": "Cari kami melalui media sosial!",
     },
     "zh": {
-       "experiencebtn": "ParryLab <br> 经验",
+       "experiencebtn": "帕里实验室",
        "creatorsbtn": "帕里的创办人",
        "aboutbtn": "关于帕里",
        "langbtn": "简体中文",

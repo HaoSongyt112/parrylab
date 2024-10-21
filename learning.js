@@ -1,7 +1,7 @@
 let languageContent = {
     "en": {
        "homebtn": "Home",
-       "newsbtn": "News",
+       "newsbtn": "Dashboard",
        "contactbtn": "Contact",
        "langbtn": "English",
        "title": "ParryLab",

@@ -3,20 +3,21 @@
 <head>
     <title>ParryLab | The Brain's Hub for Knowledge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/image/image-removebg-preview (5).png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="topnav" id="myTopnav">
         <img class="logo" src="image/image-removebg-preview (5).png">
         <a href="index.html" class="selection" id="homebtn">Home</a>
-        <a href="#news" class="selection" id="newsbtn">News</a>
-        <a href="#contact" class="selection" id="contactbtn">Contact</a>
+        <a href="/dashboard.html" class="selection" id="newsbtn">Dashboard</a>
         <a onclick="dropDown()" class="selection dropbtn" id="langbtn">English</a>
         <div id="myDropdown" class="dropdown-content">
           <a id="lang3" onclick="switchLang('en')">English</a>
           <a id="lang1" onclick="switchLang('zh')">简体中文</a>
           <a id="lang2" onclick="switchLang('bm')">Malay</a>
         </div>
+        <a onclick="history.back()" class="selection" id="contactbtn">Back</a>
         <a class="title" id="title">ParryLab</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
           <i class="fa fa-bars"></i>
@@ -31,9 +32,9 @@
             <div class="card">
               <img src="image/blank-profile-picture-973460_960_720.jpg">
               <div style="margin-left: 1vw;">
-                <h1 class="box-title" id="name">User</h1>
+                <h1 class="box-title">Welcome <span id="name"></span>!!!</h1>
                 <h2 id="gradename">Grade: <span id="grade"></span></h2>
-                <h2 class="subjects" id="subjectsname">Subjects: <span id="subjects"></span></h2>
+                <h2 class="subjects" id="subjectsname">Subjects: <span id="subjects">None</span></h2>
               </div>
             </div>
           </a>
@@ -51,7 +52,6 @@
           </a>
         </div>
       </div>
-
 <script src="dashboard.js"></script>
 <script src="time.js"></script>
 <script>
@@ -98,7 +98,7 @@
   }
 
   window.onload; {
-    if (sessionStorage.getItem('grade') == 'undefined' / 'NaN' / 'Null') {
+    if (sessionStorage.getItem('grade') == 'undefined', 'NaN', 'null') {
       document.getElementById('grade').innerHTML = 'None'
     } else {
       document.getElementById('grade').innerHTML = sessionStorage.getItem('grade')
@@ -111,6 +111,7 @@
    var sejstorage = sessionStorage.getItem("sej");
    var geostorage = sessionStorage.getItem("geo");
    var bcstorage = sessionStorage.getItem("bc");
+   var name = localStorage.getItem("name")
    let arr = [engstorage, bmstorage, bcstorage, mathstorage, scstorage, sejstorage, geostorage]
 
     if (engstorage == 'true') {
@@ -134,8 +135,12 @@
     if (sejstorage == 'true') {
       document.getElementById("subjects").innerHTML = document.getElementById("subjects").innerHTML+", "+"History"
     }
-    if (arr.every((val) => val === 'false') == true) {
-      document.getElementById("subjects").innerHTML = "None"
+
+    if (name != '') {
+      document.getElementById('name').innerHTML = name
+    } else {
+      alert('An Error have occured! Please reenter your details!')
+      window.location.href = "survey.html"
     }
   }
 
@@ -146,6 +151,7 @@ function getSessionTime() {
     const time = sessionStorage.getItem('sessiontime') / 1000
     const hours = Math.trunc(time / 3600)
     const minutes = Math.trunc(time / 60)
+    const fminutes = minutes - 60 * hours
     const seconds = time - 60 * minutes
     if (hours <= 0, hours == NaN) {
       document.getElementById('hours').innerHTML = ""
@@ -155,7 +161,7 @@ function getSessionTime() {
     if (minutes <= 0, minutes == NaN) {
       document.getElementById('minutes').innerHTML = ""
     } else {
-      document.getElementById('minutes').innerHTML = minutes + "m"
+      document.getElementById('minutes').innerHTML = fminutes + "m"
     }
     if (seconds < 0, seconds == NaN) {
       document.getElementById('seconds').innerHTML = ""
@@ -169,6 +175,7 @@ function getLocalTime() {
     const time = localStorage.getItem('localtime') / 1000
     const hours = Math.trunc(time / 3600)
     const minutes = Math.trunc(time / 60)
+    const fminutes = minutes - 60 * hours
     const seconds = time - 60 * minutes
     if (hours <= 0, hours == NaN) {
       document.getElementById('thours').innerHTML = ""
@@ -178,7 +185,7 @@ function getLocalTime() {
     if (minutes <= 0, minutes == NaN) {
       document.getElementById('tminutes').innerHTML = ""
     } else {
-      document.getElementById('tminutes').innerHTML = minutes + "m"
+      document.getElementById('tminutes').innerHTML = fminutes + "m"
     }
     if (seconds < 0, seconds == NaN) {
       document.getElementById('tseconds').innerHTML = ""
