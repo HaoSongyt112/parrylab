@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ParryLab | The Brain's Hub for Knowledge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="/image/image-removebg-preview (5).png">
+</head>
+<style>
+  body {
+    width: 100vw;
+    height: 100vh;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      user-select: none;
+      overflow-x: hidden;
+  }
+
+  .topnav {
+      width: 20%;
+      height: 100vh;
+      top: 0px;
+      display: flex;
+      position: fixed;
+      bottom: 0px;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+      background-color: lightgray;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      animation: fadeInNav 0.3s forwards;
+      z-index: 2;
+}
+
+.topnav a.selection {
+float: left;
+display: block;
+color: black;
+text-align: center;
+margin: 5vh 0vw;
+text-decoration: none;
+font-size: 17px;
+cursor: pointer;
+}
+
+.topnav a.title {
+display: none;
+}
+
+.topnav a.selection:hover {
+animation: fadeInText 0.5s both;
+}
+
+.topnav a.icon {
+display: none;
+}
+
+.logo {
+  width: 55%;
+  height: auto;
+}
+
+.top-title {
+opacity: 0;
+width: 80vw;
+margin-left: 20vw;
+font-size: 40px;
+text-align: center;
+}
+
+#calculator {
+  display: none;
+  position: fixed;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+}
+
+#calculator iframe {
+  width: 440px;
+  height: 367px;
+  border: none;
+}
+
+.controller {
+  display: none;
+  position: fixed;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  height: 33vh;
+  bottom: 0;
+  right: 0;
+}
+
+
+#protractor {
+  display: none;
+  position: absolute;
+  width: 35vw;
+  height: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 380px 380px 0px 0px;
+  cursor: move;
+}
+
+#mydivheader {
+padding: 10px;
+cursor: move;
+z-index: 10;
+background-color: #2196F3;
+color: #fff;
+font-weight: bold;
+}
+
+.btn {
+  margin: 0px 5px;
+}
+
+.content-1 {
+opacity: 0;
+display: flex;
+flex-wrap: wrap;
+flex-direction: row;
+margin-left: 20vw;
+width: 80vw;
+height: auto;
+align-items: center;
+justify-content: center;
+align-content: space-between;
+}
+
+.content-1.in-view {
+animation: slideUpBox 0.3s forwards ease;
+}
+
+.top-title.in-view {
+animation: slideUpBox 0.7s forwards ease;
+}
+
+.card {
+display: flex;
+width: 30vw;
+margin: 20px;
+color: white;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+}
+
+.card .background {
+display: block;
+width: 30vw;
+height: 30vh;
+min-height: auto;
+object-fit: cover;
+border-radius: 25px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card .black {
+position: absolute;
+width: 30vw;
+height: 30vh;
+border-radius: 25px;
+background-color: rgba(0, 0, 0, 0.25);
+z-index: 1;
+}
+
+.box-title {
+display: block;
+position: absolute;
+z-index: 2;
+font-size: 2vw;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 100px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+top: 75vh;
+}
+
+.dropdown-content2 {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 100px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+top: 60%;
+}
+
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown-content2 a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown-content2 a:hover {background-color: #ddd;}
+
+.show {display:block;}
+
+.maindiv {
+  width: 80vw;
+  margin-left: 20vw;
+  text-align: center;
+}
+
+.wholequiz {
+  display: flex;
+  padding-left: 20vw;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wholequiz img {
+  width: 40vw;
+  height: auto;
+  border-radius: 20px;
+}
+
+.submit {
+  width: 100px;
+  margin: 10px auto;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  margin: 20px 0px;
+}
+
+
+@keyframes slideUpBox {
+from {
+  margin-top: 100px;
+  opacity: 0;
+}
+to {
+  margin-top: 20px;
+  opacity: 1;
+}
+}
+
+@keyframes fadeInText {
+0% {
+  color: black;
+  text-shadow: none;
+}
+100% {
+  color: white;
+  text-shadow: 2px 2px 8px gray;
+}
+}
+
+@keyframes fadeInNav {
+0% {
+  opacity: 0%;
+}
+100% {
+  opacity: 100%;
+}
+}
+
+@media screen and (max-width: 1000px) {
+.box-desc {
+  margin-top: 4.5%;
+}
+}
+
+@media screen and (max-width: 600px) {
+.topnav a.selection {display: none; margin: 0px;}
+.topnav a.icon {
+  display: block;
+  margin: 0px;
+  margin-left: 80vw;
+  color: black;
+}
+.topnav {
+  position: relative;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  align-content: space-between;
+  flex-direction: row;
+}
+.logo {
+  width: 10%;
+  height: auto;
+}
+.content-1 {
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+.card {
+  width: 50vw;
+}
+.card .background {
+  width: 100%;
+}
+.card .black {
+  width: 50vw;
+}
+.top-title {
+width: 100%;
+margin-left: 0vw;
+margin-top: 5vw;
+font-size: 33px;
+text-align: center;
+}
+.box-title {
+font-size: 7vw;
+}
+.box-desc {
+width: 45vw;
+font-size: 3vw;
+margin-top: 10vh;
+}
+.dropdown-content , .dropdown-content2 {
+position: relative;
+top: 0;
+text-align: center;
+}
+.change {
+width: 100vw;
+margin-left: 0vw;
+}
+
+#calculator iframe {
+  width: 100vw;
+  object-fit: cover;
+}
+
+.questions {
+  text-align: left;
+}
+
+.protractor {
+  position: absolute;
+}
+
+.maindiv {
+  margin: auto;
+}
+
+.quiz {
+  margin: auto;
+}
+
+.wholequiz img {
+  width: 80vw;
+}
+
+.wholequiz {
+  width: 100vw;
+  padding-left: 0px;
+}
+}
+
+@media screen and (max-width: 600px) {
+.topnav.responsive {display: block; position: relative; padding: 0px;}
+.topnav.responsive a.icon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+.topnav.responsive a.selection {
+  float: none;
+  display: block;
+  text-align: center;
+  margin: 0px;
+  padding: 14px 16px;
+}
+.topnav.responsive a.title {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  font-weight: bold;
+}
+.topnav.responsive .logo {
+  display: none;
+}
+
+#mydivheader {
+  display: none;
+}
+}
+</style>
+<body>
+    <div class="topnav" id="myTopnav">
+        <img class="logo" src="/image/image-removebg-preview (5).png">
+        <a href="/index.html" class="selection" id="homebtn">Home</a>
+        <a href="/dashboard.html" class="selection" id="newsbtn">Dashboard</a>
+        <a onclick="dropDown2()" class="selection" id="contactbtn">Tools</a>
+        <div id="myDropdown2" class="dropdown-content2">
+          <a onclick="calculator()">Calculator</a>
+          <a onclick="controller()">Geometric Tools</a>
+          <a onclick="switchLang('bm')">Malay</a>
+        </div>
+        <a onclick="dropDown()" class="selection dropbtn" id="langbtn">English</a>
+        <div id="myDropdown" class="dropdown-content">
+          <a id="lang3" onclick="switchLang('en')">English</a>
+          <a id="lang1" onclick="alert('Mandarin Translation does not support this page!')">简体中文</a>
+          <a id="lang2" onclick="switchLang('bm')">Malay</a>
+        </div>
+        <a class="title" id="title">ParryLab</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    <div id="calculator">
+      <div id="mydivheader">Click here to move</div>
+      <iframe width="100%" height="100%" contenteditable="true" src="/calculator/main.html"></iframe>
+    </div>
+    <img id="protractor" src="/image/protractor.svg">
+      <div class="controller" id="controller">
+        <h3 style="margin: 20px 20px;">Geometric Tools Controller</h3>
+        <input class="btn" type="button" value="Protractor" onclick="protractor()"><br><br>
+        <label>Degrees:</label>
+        <input id="angle" type="range" value="0" min="-360" max="360"><br><br>
+        <label>Value:</label>
+        <label id="data">90</label><br><br>
+        <input onclick="document.getElementById('angle').value = '0'; document.getElementById('data').innerHTML = '0'" type="button" value="Reset">
+        <input style="margin-left: 10px;" type="button" onclick="document.getElementById('controller').style.display = 'none'" value="Close">
+      </div>
+
+      <div class="maindiv">
+        <h1>Form 3 Math Test</h1>
+      </div>
+      <div class="wholequiz">
+        <div id="quiz"></div>
+<div class="question-container">
+  <img>
+  <div><label id="question" class="question"></label></div>
+</div>
+<div>
+  <label id="a_text"></label>
+  <input id="a" type="radio" class="answer" name="1"/>
+</div>
+<div>
+  <label id="b_text"></label>
+  <input id="b" type="radio" class="answer" name="1"/>
+</div>
+<div>
+  <label id="c_text"></label>
+  <input id="c" type="radio" class="answer" name="1"/>
+</div>
+<div>
+  <label id="d_text"></label>
+  <input id="d" type="radio" class="answer" name="1"/>
+</div>
+<button id="submit" class="submit">Submit</button>
+      </div>
+</body>
+<script src="main.js"></script>
+<script src="/time.js"></script>
+<script>
+  var slider = document.getElementById("angle");
+var output = document.getElementById("data");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  let angle = document.getElementById("angle").value
+  document.getElementById("protractor").style.transform = "rotate("+angle+"deg)";
+}
+
+  function calculator() {
+    const calculator = document.getElementById("calculator");
+    document.getElementById("myDropdown2").classList.remove('show');
+    if (calculator.style.display == "block") {
+      document.getElementById("calculator").style.display = "none";
+    } else {
+      document.getElementById("calculator").style.display = "block";
+    }
+  }
+
+  function protractor() {
+    const protractor = document.getElementById("protractor");
+    document.getElementById("myDropdown2").classList.remove('show');
+    if (protractor.style.display == "block") {
+      document.getElementById("protractor").style.display = "none";
+    } else {
+      document.getElementById("protractor").style.display = "block";
+    }
+  }
+
+  function controller() {
+    const controller= document.getElementById("controller");
+    document.getElementById("myDropdown2").classList.remove('show');
+    if (controller.style.display == "block") {
+      document.getElementById("controller").style.display = "none";
+    } else {
+      document.getElementById("controller").style.display = "block";
+    }
+  }
+
+  const quizData = [{
+    question: "1. Puan Hana is an entrepreneur. She pays her suppliers by cheques. Which type of account is owned by Puan Hana? ", correct: "d",
+    a: "A. Fixed savings account ", b: "B: Gold savings account ", c: "C: Savings account ", d: "D: Current account",
+    img: ""
+  },
+  {
+    question: "2. The diagram shows the orthogonal projection of an object on the plane PORS.", correct: "c",
+    a: "A: Objek", b: "B: Normal", c: "C: Orthogonal projection", d: "D: Vertical plane",
+    img: "/image/Form3_Math1.jpeg"
+  },
+  {
+    question: "3. The diagram is drawn on a grid of squares. Which of the shapes, A, B, C orD is not a scale drawing of shape P?", correct: "d",
+    a: "A: A", b: "B: B", c: "C: C", d: "D: D",
+    img: "/image/Form3_Math2.jpeg"
+  },
+  {
+    question: "4. Y is a point which moves such that it is always Y iS equidistant from lines LM and MN. Which of the following lines is the locus of Y? ", correct: "d",
+    a: "A: HK", b: "B: HM", c: "C: JM", d: "D: KN",
+    img: "/image/Form3_Math3.jpeg"
+  },
+  {
+    question: "5. 3⁵×3⁵=", correct: "a",
+    a: "A 3¹⁰", b: "B 3²⁵", c: "C 9¹⁰", d: "D 9²⁵",
+    img: ""
+  },
+  {
+    question: "6. Simplify: (2p³q²)² / 10p²q³", correct: "d",
+    a: "A: ⅕p⁴q", b: "B: ⅖p⁴q", c: "C: ⅖p⁷q²", d: "D: ⅘p⁷q²",
+    img: ""
+  },
+  {
+    question: "7. Calculate the value of (4- 0.286) ÷ 60 and round off the answer to 2 significant figures. ", correct: "c",
+    a: "A: 0.06", b: "B: 0.061", c: "C: 0.062", d: "D: 0.07",
+    img: ""
+  },
+  {
+    question: "8. Express 2.438 x 10⁻⁵ as a single number. ", correct: "b",
+    a: "A 0.002438 ", b: "B 0.0002438 ", c: "Cascading Simple Sheets", d: "Cars SUVs Sailboats",
+    img: ""
+  },
+  {
+    question: "9. A rectangular floor has a length of 3 600 cm and a width of 2 000 em. The whole floor is covered by 1.8 x 10⁴ square tiles of the same size. Calculate the length of side, in cm, of each tile. ", correct: "b",
+    a: "A: 20 ", b: "B: 40", c: "C: 200 ", d: "D: 400",
+    img: ""
+  },
+  {
+    question: "10. The information shows the details of the personal lean made by Mr Wong. What is the total amount pasable by Mr Wong?", correct: "d",
+    a: "A: RM600", b: "B: RM3600", c: "C: RM15600", d: "D: RM18600",
+    img: "/image/Form3_Math10.jpeg"
+  },
+  {
+    question: "11. In the diagram, square Q is the scale drawing of square P according to the scale 1 : n. Find the value of n.", correct: "b",
+    a: "A: ¼", b: "B: ½", c: "C: 2", d: "D: 4",
+    img: "/image/Form3_Math11.jpeg"
+  },
+  {
+    question: "12. 2cos 60°- tan 45°=", correct: "d",
+    a: "A: -1", b: "B: -½", c: "C: 0", d: "D: ½",
+    img: ""
+  },
+  {
+    question: "13. In the diagram, ADC is a straight line. Given BD = 15cm, tan ∠BAD = ⅝ and tan ∠CBD = ⅔, calculate the length, in cm of ADC", correct: "c",
+    a: "A: 18", b: "B: 20", c: "C: 24", d: "D: 34",
+    img: "/image/Form3_Math13.jpeg"
+  },
+  {
+    question: "14.  In the diagram, TOV is a diameter of the circle with centre OE. Calculate the value of x. ", correct: "d",
+    a: "A: 25°", b: "B: 35°", c: "C: 45°", d: "D: 55°",
+    img: "/image/Form3_Math14.jpeg"
+  },
+  {
+    question: "15. Determine the y-intercept of the straight line 3x+ 2y +8=0. ", correct: "c",
+    a: "A: -4 ", b: "B: -2", c: "C: 2", d: "D: 3",
+    img: ""
+  },
+  {
+    question: "16. In the diagram, KLMN is a cyclic quodrileterd and LM = MN. Calculate the value of x.", correct: "c",
+    a: "A: 70°", b: "B: 100°", c: "C: 130°", d: "D: 140°",
+    img: "/image/Form3_Math16.jpeg"
+  },
+  {
+    question: "17. In the diagram, PUV and PQR are tangents to the circle QSTU. ∠SQR is equal to", correct: "c",
+    a: "A: ∠PQU", b: "B: ∠QSU", c: "C: ∠QTU", d: "D: ∠QUS",
+    img: "/image/Form3_Math17.jpeg"
+  },
+  {
+    question: "18. Given the straight lines 4y + 8x=-3 and 3y = kx + 3 are parallel. Find the value of k.", correct: "a",
+    a: "A. -6", b: "B. -3", c: "stop asking", d: "I don't know",
+    img: ""
+  },
+  {
+    question: "19. Which of the following does not have the same value as 27⅔?", correct: "b",
+    a: "A: 3²", b: "B: 81½", c: "C: (√3)⁴", d: "D: (√9)³",
+    img: ""
+  },
+  {
+    question: "20. Given 4² x 2⁴ x 8² = 2ⁿ. Determine the value of n.", correct: "c",
+    a: "A: 14", b: "B: 15", c: "C: 16", d: "D: 18",
+    img: ""
+}];
+
+const quiz = document.getElementById('quiz')
+const answerEls = document.querySelectorAll('.answer')
+const questionEl = document.getElementById('question')
+const a_text = document.getElementById('a_text')
+const b_text = document.getElementById('b_text')
+const c_text = document.getElementById('c_text')
+const d_text = document.getElementById('d_text')
+const submitBtn = document.getElementById('submit')
+const questImg = document.querySelector('.question-container > img')
+
+let currentQuiz = 0
+let score = 0
+
+loadQuiz()
+
+function loadQuiz() {
+
+  deselectAnswers()
+
+  const currentQuizData = quizData[currentQuiz]
+  questionEl.innerText = currentQuizData.question
+  a_text.innerText = currentQuizData.a
+  b_text.innerText = currentQuizData.b
+  c_text.innerText = currentQuizData.c
+  d_text.innerText = currentQuizData.d
+  questImg.src = currentQuizData.img
+}
+
+function deselectAnswers() {
+  answerEls.forEach(answerEl => answerEl.checked = false)
+}
+
+function getSelected() {
+  let answer
+  answerEls.forEach(answerEl => {
+    if (answerEl.checked) {
+      answer = answerEl.id
+    }
+  })
+  return answer
+}
+
+
+submitBtn.addEventListener('click', () => {
+
+      const answer = getSelected()
+      
+      if (answer) {
+        if (answer === quizData[currentQuiz].correct) {
+          score++
+        }
+        currentQuiz++;        
+        
+      if(currentQuiz < quizData.length) {
+           loadQuiz()
+       } else {
+           quiz.innerHTML = `
+           <h2>You answered ${score}/${quizData.length} questions correctly</h2>
+           <button onclick="location.reload()">Reload</button>
+           `
+       }
+    }
+})
+
+
+  function dropDown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  function dropDown2() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+  }
+  
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        return;
+      }
+      entry.target.classList.remove('in-view');
+      });
+    });
+    const allAnimatedElements = document.querySelectorAll('.animate');
+  
+    allAnimatedElements.forEach((element) => observer.observe(element));
+  
+  }); 
+  
+      function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+
+  function change() {
+    let angle = document.getElementById("angle").value
+    document.getElementById("protractor").style.transform = "rotate("+angle+"deg)";
+  }
+
+
+dragElement(document.getElementById("calculator"));
+dragElement(document.getElementById("protractor"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+window.onload = function() {
+  var box = document.getElementById('protractor');
+  
+  box.addEventListener('touchmove', function(e) {
+    var touchLocation = e.targetTouches[0];
+    
+    box.style.left = touchLocation.pageX + 'px';
+    box.style.top = touchLocation.pageY + 'px';
+  })
+
+  
+  box.addEventListener('touchend', function(e) {
+    var x = parseInt(box.style.left);
+    var y = parseInt(box.style.top);
+  })
+  
+}
+  </script>
+</html>
