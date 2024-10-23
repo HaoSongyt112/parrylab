@@ -3,7 +3,7 @@
 <head>
     <title>ParryLab | The Brain's Hub for Knowledge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/x-icon" href="image/image-removebg-preview (5).png">
+<link rel="icon" type="image/x-icon" href="/image/image-removebg-preview (5).png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -64,18 +64,19 @@
   
   }); 
 
-  let eng = document.getElementById('English').checked
-    let bc = document.getElementById('Chinese').checked
-    let bm = document.getElementById('Malay').checked
-    let sc = document.getElementById('Science').checked
-    let math = document.getElementById('Mathematics').checked
-    let geo = document.getElementById('Geography').checked
-    let sej = document.getElementById('History').checked
-    let grade = document.getElementById('level').value
-
     function submit() {
+      let eng = document.getElementById('English').checked
+      let bc = document.getElementById('Chinese').checked
+      let bm = document.getElementById('Malay').checked
+      let sc = document.getElementById('Science').checked
+      let math = document.getElementById('Mathematics').checked
+      let geo = document.getElementById('Geography').checked
+      let sej = document.getElementById('History').checked
+      let grade = document.getElementById('level').value
       const name = document.getElementById('name').value
-      if (name != '') {
+      if (name == '') {
+        alert('Please fill in your name!')
+      } else {
         sessionStorage.setItem("eng", eng)
         sessionStorage.setItem("bc", bc)
         sessionStorage.setItem("bm", bm)
@@ -86,8 +87,6 @@
         sessionStorage.setItem("grade", grade)
         localStorage.setItem("name", name)
         window.location.href = 'learning.html';
-      } else {
-        alert('Please fill in your name!')
       }
     }
   </script>
