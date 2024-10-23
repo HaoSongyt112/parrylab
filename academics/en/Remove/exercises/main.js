@@ -6,9 +6,6 @@ let languageContent = {
        "langbtn": "English",
        "title": "ParryLab",
        "top-title": "Remove English Course",
-       "classroom": "Classroom",
-       "exercises": "Exercises",
-       "textbook": "Textbook",
     },
     "bm": {
        "homebtn": "Home",
@@ -17,9 +14,6 @@ let languageContent = {
        "langbtn": "Malay",
        "title": "ParryLab",
        "top-title": "Kursus Bahasa Inggeris ",
-       "classroom": "Kelas",
-       "exercises": "Latihan",
-       "textbook": "Buku Teks",
     },
  }
 
