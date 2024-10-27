@@ -6,7 +6,7 @@ let languageContent = {
        "langbtn": "English",
        "title": "ParryLab",
        "top-title": "Dashboard",
-       "cocurriculum": "Co-Curriculum",
+       "box-title": "Welcome <span id='name'></span>!!!",
     },
     "bm": {
        "homebtn": "Home",
@@ -15,6 +15,7 @@ let languageContent = {
        "langbtn": "Malay",
        "title": "ParryLab",
        "top-title": "Papan Pemuka",
+       "box-title": "Selamat Datang <span id='name'></span>!!!",
     },
     "zh": {
        "homebtn": "主页",
@@ -23,6 +24,7 @@ let languageContent = {
        "langbtn": "简体中文",
        "title": "ParryLab",
        "top-title": "仪表板",
+        "box-title": "欢迎 <span id='name'></span>!!!",
     }
  }
 
