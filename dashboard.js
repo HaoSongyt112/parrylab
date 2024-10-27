@@ -6,18 +6,15 @@ let languageContent = {
        "langbtn": "English",
        "title": "ParryLab",
        "top-title": "Dashboard",
-       "academics": "Academics",
        "cocurriculum": "Co-Curriculum",
     },
     "bm": {
        "homebtn": "Home",
-       "newsbtn": "Berita",
-       "contactbtn": "Hubungi Kami",
+       "newsbtn": "Papan Pemuka",
+       "contactbtn": "Kembali",
        "langbtn": "Malay",
        "title": "ParryLab",
-       "top-title": "Kategori",
-       "academics": "Akademik",
-       "cocurriculum": "Ko-Kurikulum",
+       "top-title": "Papan Pemuka",
     },
     "zh": {
        "homebtn": "主页",
@@ -25,9 +22,7 @@ let languageContent = {
        "contactbtn": "联络",
        "langbtn": "简体中文",
        "title": "ParryLab",
-       "top-title": "课程类别",
-       "academics": "学术",
-       "cocurriculum": "课外活动",
+       "top-title": "仪表板",
     }
  }
 
