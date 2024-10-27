@@ -2,7 +2,7 @@ let languageContent = {
     "en": {
        "homebtn": "Home",
        "newsbtn": "Dashboard",
-       "contactbtn": "Contact",
+       "contactbtn": "Back",
        "langbtn": "English",
        "title": "ParryLab",
        "top-title": "Courses Category",
@@ -11,8 +11,8 @@ let languageContent = {
     },
     "bm": {
        "homebtn": "Home",
-       "newsbtn": "Berita",
-       "contactbtn": "Hubungi Kami",
+       "newsbtn": "Papan Pemuka",
+       "contactbtn": "Kembali",
        "langbtn": "Malay",
        "title": "ParryLab",
        "top-title": "Kategori",
@@ -21,8 +21,8 @@ let languageContent = {
     },
     "zh": {
        "homebtn": "主页",
-       "newsbtn": "新闻",
-       "contactbtn": "联络",
+       "newsbtn": "仪表板",
+       "contactbtn": "返回",
        "langbtn": "简体中文",
        "title": "ParryLab",
        "top-title": "课程类别",
