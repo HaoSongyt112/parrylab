@@ -7,7 +7,6 @@ let languageContent = {
       "title": "ParryLab",
       "top-title": "Subject Category",
       "nocourses": "You have no courses right now!",
-      "bored": "Bored about the lessons? Try others!",
       "box1": "English",
       "box2": "Malay",
       "box3": "Chinese",
@@ -15,6 +14,7 @@ let languageContent = {
       "box5": "Science",
       "box6": "Geography",
       "box7": "History",
+      "bored": "Bored about the lessons? Try others!",
    },
    "bm": {
       "homebtn": "Home",
@@ -24,7 +24,6 @@ let languageContent = {
       "title": "ParryLab",
       "top-title": "Kategori Mata Pelajaran",
       "nocourses": "Anda tiada kursus sekarang!",
-      "bored": "Bosan akan pelajaran yang dipilih? Pilih yang lain!",
       "box1": "Bahasa Inggeris",
       "box2": "Malay",
       "box3": "Bahasa Cina",
@@ -32,6 +31,7 @@ let languageContent = {
       "box5": "Sains",
       "box6": "Geografi",
       "box7": "Sejarah",
+      "bored": "Bosan akan pelajaran yang dipilih? Pilih yang lain!",
    },
    "zh": {
       "homebtn": "主页",
@@ -41,7 +41,6 @@ let languageContent = {
       "title": "ParryLab",
       "top-title": "学科类别",
       "nocourses": "您现在没有课程!",
-      "bored": "对课程感到厌倦？尝试其他的！",
       "box1": "英文",
       "box2": "马来文",
       "box3": "中文",
@@ -49,6 +48,7 @@ let languageContent = {
       "box5": "科学",
       "box6": "地理",
       "box7": "历史",
+      "bored": "对课程感到厌倦？尝试其他的！",
    }
 }
 
